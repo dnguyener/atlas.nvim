@@ -58,16 +58,21 @@ end
 local function load(name)
 	local module = picker_modules[name]
 	if not module then
-		return nil
+		return nil, "unknown picker"
 	end
 	local ok, picker = pcall(require, module)
-	return ok and picker or nil
+	if ok then
+		return picker
+	end
+	return nil, picker
 end
 
 local function current_picker()
 	local name = config.options.ui.picker or "auto"
 	if name ~= "auto" then
-		return assert(load(name), string.format("Picker '%s' is not available", name))
+		local picker, err = load(name)
+		assert(picker, string.format("Picker '%s' is not available: %s", name, err or "module could not be loaded"))
+		return picker
 	end
 	return load("snacks") or load("fzf-lua") or load("mini.pick") or load("default")
 end
