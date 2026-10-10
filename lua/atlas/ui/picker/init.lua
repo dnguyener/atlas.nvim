@@ -2,7 +2,7 @@ local M = {}
 
 local config = require("atlas.config")
 
----@alias AtlasPickerName "auto"|"default"|"snacks"|"fzf-lua"
+---@alias AtlasPickerName "auto"|"default"|"snacks"|"fzf-lua"|"mini.pick"
 
 ---@class AtlasPickerPreview
 ---@field lines string[]
@@ -33,6 +33,7 @@ local picker_modules = {
 	default = "atlas.ui.picker.atlas",
 	snacks = "atlas.ui.picker.snacks",
 	["fzf-lua"] = "atlas.ui.picker.fzf_lua",
+	["mini.pick"] = "atlas.ui.picker.mini_pick",
 }
 
 local sizes = {
@@ -68,7 +69,7 @@ local function current_picker()
 	if name ~= "auto" then
 		return assert(load(name), string.format("Picker '%s' is not available", name))
 	end
-	return load("snacks") or load("fzf-lua") or load("default")
+	return load("snacks") or load("fzf-lua") or load("mini.pick") or load("default")
 end
 
 ---@param request AtlasPickerRequest

@@ -78,7 +78,7 @@ up and what's missing.
     ui = {
       -- Show the Atlas statusline.
       statusline = true,
-      -- "auto", "default", "snacks", or "fzf-lua".
+      -- "auto", "default", "snacks", "fzf-lua", or "mini.pick".
       picker = "auto",
       -- Make the main Atlas dashboard a listed buffer.
       listed_buffer = false,

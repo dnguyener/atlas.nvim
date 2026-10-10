@@ -317,7 +317,7 @@ Save searches as bookmarks, or press `*` to star a pull request or issue. Both a
   ui = {
     -- Global statusline for Atlas. See the Statusline section below.
     statusline = true,
-    -- "auto", "default", "snacks", or "fzf-lua".
+    -- "auto", "default", "snacks", "fzf-lua", or "mini.pick".
     picker = "auto",
     -- Make the main Atlas dashboard a listed buffer.
     listed_buffer = false,
